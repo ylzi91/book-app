@@ -1,24 +1,64 @@
-import logo from './logo.svg';
+
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import MyNav from './components/MyNav';
+import Welcome from './components/Welcome';
+import { Container, Row, Col } from 'react-bootstrap';
+import AllTheBooks from './components/AllTheBooks';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+     <header>
+        <MyNav />
+     </header>
+     <main>
+        <Welcome />
+        <Container fluid>
+            <Row>
+              <Col sm={12} md={6} lg={4} >
+                <h4>Libri fantasy</h4>
+              </Col>
+            </Row>
+                <Row>
+                <AllTheBooks myGenre = "fantasyBooks" />
+              </ Row>
+            <Row>
+              <Col sm={12} md={6} lg={4} >
+                <h4>Libri di storia</h4>
+              </Col>
+            </Row>
+                <Row>
+                <AllTheBooks myGenre = "historyBooks" />
+              </ Row>
+            <Row>
+              <Col sm={12} md={6} lg={4} >
+                <h4>Libri horror</h4>
+              </Col>
+            </Row>
+                <Row>
+                <AllTheBooks myGenre = "horrorBooks" />
+              </ Row>
+            <Row>
+              <Col sm={12} md={6} lg={4} >
+                <h4>Libri Romantici</h4>
+              </Col>
+            </Row>
+                <Row>
+                <AllTheBooks myGenre = "romanceBooks" />
+              </ Row>
+            <Row>
+              <Col sm={12} md={6} lg={4} >
+                <h4>Libri FantaScienza</h4>
+              </Col>
+            </Row>
+                <Row>
+                <AllTheBooks myGenre = "scifiBooks" />
+              </ Row>
+
+        </Container>
+     </main>
+    </>
   );
 }
 
