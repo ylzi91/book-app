@@ -6,8 +6,36 @@ import horrorBooks from "../data/books/horror.json";
 import romanceBooks from "../data/books/romance.json";
 import scifiBooks from "../data/books/scifi.json";
 
+const jSons = {
+    fantasyBooks,
+    historyBooks,
+    horrorBooks,
+    romanceBooks,
+    scifiBooks
+}
+
 class AllTheBooks extends Component {
+
+
+
   render() {
+    const genreBooks = jSons [this.props.myGenre]
+    console.log(genreBooks)
+    return genreBooks.map((myBook, index) => {
+        if (index > 10) return
+        return(
+            <Col sm={12} md={6} lg={2} className="mb-3">
+              <Card className="h-100">
+                <Card.Img variant="top" src={myBook.img} />
+                <Card.Body className=" d-flex flex-column">
+                  <Card.Title className=" flex-grow-1 ">{myBook.title}</Card.Title>
+                  <Card.Text className=" border-top p-2 border-black text-center">{myBook.price} €</Card.Text>
+                  <Button variant="primary">Compra Ora</Button>
+                </Card.Body>
+              </Card>
+            </Col>
+        )
+    })
     switch (this.props.myGenre) {
       case "fantasyBooks":
         return fantasyBooks.map((myBook, index) => {
