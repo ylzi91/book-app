@@ -11,9 +11,9 @@ class AllTheBooks extends Component {
     switch (this.props.myGenre) {
       case "fantasyBooks":
         return fantasyBooks.map((myBook, index) => {
-          if (index > 3) return;
+          if (index > 10) return;
           return (
-            <Col sm={12} md={6} lg={3} className="mb-3">
+            <Col sm={12} md={6} lg={2} className="mb-3">
               <Card className="h-100">
                 <Card.Img variant="top" src={myBook.img} />
                 <Card.Body className=" d-flex flex-column">

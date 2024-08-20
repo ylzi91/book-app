@@ -16,11 +16,11 @@ function App() {
         <Welcome />
         <Container fluid>
             <Row>
-              <Col sm={12} md={6} lg={4} >
+              <Col sm={12} md={6} lg={4}>
                 <h4>Libri fantasy</h4>
               </Col>
             </Row>
-                <Row>
+                <Row className=' d-flex flex-nowrap overflow-scroll'>
                 <AllTheBooks myGenre = "fantasyBooks" />
               </ Row>
             <Row>
