@@ -5,8 +5,13 @@ import MyNav from './components/MyNav';
 import Welcome from './components/Welcome';
 import { Container, Row, Col } from 'react-bootstrap';
 import AllTheBooks from './components/AllTheBooks';
+import ShowBook from './components/ShowBook';
 
 function App() {
+  const titles = ['Libri Fantasy', 'Libri di Storia', 'Libri Horror', 'Libri Romantici', 'Libri Fantascienza']
+  const genre = ['fantasyBooks', 'historyBooks', 'horrorBooks', 'romanceBooks', 'scifiBooks']
+
+
   return (
     <>
      <header>
@@ -15,47 +20,7 @@ function App() {
      <main>
         <Welcome />
         <Container fluid>
-            <Row>
-              <Col sm={12} md={6} lg={4}>
-                <h4>Libri fantasy</h4>
-              </Col>
-            </Row>
-                <Row className=' d-flex flex-nowrap overflow-scroll'>
-                <AllTheBooks myGenre = "fantasyBooks" />
-              </ Row>
-            <Row>
-              <Col sm={12} md={6} lg={4} >
-                <h4>Libri di storia</h4>
-              </Col>
-            </Row>
-                <Row>
-                <AllTheBooks myGenre = "historyBooks" />
-              </ Row>
-            <Row>
-              <Col sm={12} md={6} lg={4} >
-                <h4>Libri horror</h4>
-              </Col>
-            </Row>
-                <Row>
-                <AllTheBooks myGenre = "horrorBooks" />
-              </ Row>
-            <Row>
-              <Col sm={12} md={6} lg={4} >
-                <h4>Libri Romantici</h4>
-              </Col>
-            </Row>
-                <Row>
-                <AllTheBooks myGenre = "romanceBooks" />
-              </ Row>
-            <Row>
-              <Col sm={12} md={6} lg={4} >
-                <h4>Libri FantaScienza</h4>
-              </Col>
-            </Row>
-                <Row>
-                <AllTheBooks myGenre = "scifiBooks" />
-              </ Row>
-
+          <ShowBook genreTitle={titles} genreToPass={genre} />
         </Container>
      </main>
     </>

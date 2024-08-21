@@ -5,6 +5,7 @@ import historyBooks from "../data/books/history.json";
 import horrorBooks from "../data/books/horror.json";
 import romanceBooks from "../data/books/romance.json";
 import scifiBooks from "../data/books/scifi.json";
+import SingleBook from "./SingleBook";
 
 const jSons = {
     fantasyBooks,
@@ -16,111 +17,26 @@ const jSons = {
 
 class AllTheBooks extends Component {
 
+ state = {
+  search: ''
+ }
 
 
   render() {
+
     const genreBooks = jSons [this.props.myGenre]
-    console.log(genreBooks)
+    
+    
     return genreBooks.map((myBook, index) => {
         if (index > 10) return
         return(
-            <Col sm={12} md={6} lg={2} className="mb-3">
-              <Card className="h-100">
-                <Card.Img variant="top" src={myBook.img} />
-                <Card.Body className=" d-flex flex-column">
-                  <Card.Title className=" flex-grow-1 ">{myBook.title}</Card.Title>
-                  <Card.Text className=" border-top p-2 border-black text-center">{myBook.price} €</Card.Text>
-                  <Button variant="primary">Compra Ora</Button>
-                </Card.Body>
-              </Card>
-            </Col>
+            <SingleBook myBook = {myBook} />
         )
     })
-    switch (this.props.myGenre) {
-      case "fantasyBooks":
-        return fantasyBooks.map((myBook, index) => {
-          if (index > 10) return;
-          return (
-            <Col sm={12} md={6} lg={2} className="mb-3">
-              <Card className="h-100">
-                <Card.Img variant="top" src={myBook.img} />
-                <Card.Body className=" d-flex flex-column">
-                  <Card.Title className=" flex-grow-1 ">{myBook.title}</Card.Title>
-                  <Card.Text className=" border-top p-2 border-black text-center">{myBook.price} €</Card.Text>
-                  <Button variant="primary">Compra Ora</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-          );
-        });
-        case "historyBooks":
-            return historyBooks.map((myBook, index) => {
-                if (index > 3) return;
-                return (
-                  <Col sm={12} md={6} lg={3} className="mb-3">
-                    <Card className="h-100">
-                      <Card.Img variant="top" src={myBook.img} />
-                      <Card.Body className=" d-flex flex-column">
-                        <Card.Title className=" flex-grow-1 ">{myBook.title}</Card.Title>
-                        <Card.Text className=" border-top p-2 border-black text-center">{myBook.price} €</Card.Text>
-                        <Button variant="primary">Compra Ora</Button>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                );
-              });
-        case "horrorBooks":
-            return horrorBooks.map((myBook, index) => {
-                if (index > 3) return;
-                return (
-                  <Col sm={12} md={6} lg={3} className="mb-3">
-                    <Card className="h-100">
-                      <Card.Img variant="top" src={myBook.img} />
-                      <Card.Body className=" d-flex flex-column">
-                        <Card.Title className=" flex-grow-1 ">{myBook.title}</Card.Title>
-                        <Card.Text className=" border-top p-2 border-black text-center">{myBook.price} €</Card.Text>
-                        <Button variant="primary">Compra Ora</Button>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                );
-              });
-        case "scifiBooks":
-            return scifiBooks.map((myBook, index) => {
-                if (index > 3) return;
-                return (
-                  <Col sm={12} md={6} lg={3} className="mb-3">
-                    <Card className="h-100">
-                      <Card.Img variant="top" src={myBook.img} />
-                      <Card.Body className=" d-flex flex-column">
-                        <Card.Title className=" flex-grow-1 ">{myBook.title}</Card.Title>
-                        <Card.Text className=" border-top p-2 border-black text-center">{myBook.price} €</Card.Text>
-                        <Button variant="primary">Compra Ora</Button>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                );
-              });
-        case "romanceBooks":
-            return romanceBooks.map((myBook, index) => {
-                if (index > 3) return;
-                return (
-                  <Col sm={12} md={6} lg={3} className="mb-3">
-                    <Card className="h-100">
-                      <Card.Img variant="top" src={myBook.img} />
-                      <Card.Body className=" d-flex flex-column">
-                        <Card.Title className=" flex-grow-1 ">{myBook.title}</Card.Title>
-                        <Card.Text className=" border-top p-2 border-black text-center">{myBook.price} €</Card.Text>
-                        <Button variant="primary">Compra Ora</Button>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                );
-              });
 
 
     }
   }
-}
+
 
 export default AllTheBooks;
