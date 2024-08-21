@@ -25,15 +25,19 @@ class ShowBook extends Component {
             <h4>{this.props.genreTitle[i]}</h4> 
             <input onChange={ (e) => {
                 e.preventDefault()
+                const newSearch = [...this.state.search]
+                newSearch[i] = e.target.value
                 this.setState({
-                    search: e.target.value[i]
+                    search: newSearch
                 })
                 
-            }} className="mb-2" type="text" placeholder= "Cerca" value={this.state.search[i]} />
+                
+            } } className="mb-2" type="text" placeholder= "Cerca" value={this.state.search[i]} />
           </Col>
+          
         </Row>
         <Row className=" d-flex flex-nowrap overflow-scroll">
-          <AllTheBooks myGenre= {this.props.genreToPass[i]} searchPassed = {mySearch} />
+          <AllTheBooks myGenre = {this.props.genreToPass[i]} searchPassed = {!this.state.search[i] ? '' : this.state.search[i]} />
         </Row>
       </>
     );

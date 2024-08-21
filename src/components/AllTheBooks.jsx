@@ -15,20 +15,17 @@ const jSons = {
     scifiBooks
 }
 
+
 class AllTheBooks extends Component {
 
- state = {
-  search: ''
- }
 
 
   render() {
 
     const genreBooks = jSons [this.props.myGenre]
     
-    
-    return genreBooks.map((myBook, index) => {
-        if (index > 10) return
+    return genreBooks.filter((book) => book.title.toLowerCase().includes(this.props.searchPassed.toLowerCase())).map((myBook, index) => {
+        if (index > 10 && this.props.searchPassed === '') return
         return(
             <SingleBook myBook = {myBook} />
         )
