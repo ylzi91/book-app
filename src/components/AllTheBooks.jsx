@@ -1,5 +1,4 @@
 import { Component } from "react";
-import { Card, Button, Col } from "react-bootstrap";
 import fantasyBooks from "../data/books/fantasy.json";
 import historyBooks from "../data/books/history.json";
 import horrorBooks from "../data/books/horror.json";
@@ -24,10 +23,12 @@ class AllTheBooks extends Component {
 
     const genreBooks = jSons [this.props.myGenre]
     
-    return genreBooks.filter((book) => book.title.toLowerCase().includes(this.props.searchPassed.toLowerCase())).map((myBook, index) => {
+    return genreBooks.filter((book) => 
+      book.title.toLowerCase().includes(this.props.searchPassed.toLowerCase())).map((myBook, index) => {
         if (index > 10 && this.props.searchPassed === '') return
         return(
-            <SingleBook myBook = {myBook} />
+          
+          <SingleBook myBook = {myBook} key = {myBook.asin}/>
         )
     })
 

@@ -4,7 +4,7 @@ import { render } from "@testing-library/react";
 import { Component } from "react";
 
 
-let mySearch = ''
+
 class ShowBook extends Component {
 
     state = {
@@ -20,7 +20,7 @@ class ShowBook extends Component {
   for (let i = 0; i < this.props.genreTitle.length; i++) {
     elements.push(
       <>
-        <Row>
+        <Row key = {i}>
           <Col sm={12} md={6} lg={4}>
             <h4>{this.props.genreTitle[i]}</h4> 
             <input onChange={ (e) => {
