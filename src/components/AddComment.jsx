@@ -5,7 +5,7 @@ import { Form, Button } from "react-bootstrap";
 class AddComment extends Component {
   state = {
     comment: "",
-    rate: "",
+    rate: "1",
     elementId: this.props.idCom,
   };
 
@@ -27,7 +27,7 @@ class AddComment extends Component {
       this.setState({
         ...this.state,
         comment: '',
-        rate: ''
+        rate: '1'
       })
     } catch {
       console.log("Errore");
