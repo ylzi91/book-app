@@ -37,7 +37,16 @@ class AddComment extends Component {
     }
   };
 
+  componentDidUpdate(){
+    if(this.state.elementId !== this.props.idCom)
+    this.setState({
+      ...this.state,
+      elementId: this.props.idCom
+    })
+  }
+
   render() {
+    console.log('IDCOMM', this.props.idCom)
     return (
       <Form onSubmit={this.writeComment}>
         <Form.Group className="mb-3">
@@ -65,7 +74,7 @@ class AddComment extends Component {
             <option>5</option>
           </Form.Select>
         </Form.Group>
-        <Button type="submit">Submit</Button>
+        <Button type="submit">Invia</Button>
           {this.Saved.mySaved && <p>Salvato correttamente</p>}
       </Form>
     );

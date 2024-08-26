@@ -7,7 +7,7 @@ import CommentArea from "./CommentArea";
 class ShowBook extends Component {
   state = {
     search: [],
-    commentpass: null,
+    commentpass: {},
   };
   changeState = (newSelBook) => {
     this.setState({
@@ -47,17 +47,20 @@ class ShowBook extends Component {
               searchPassed={!this.state.search[i] ? "" : this.state.search[i]}
             />
           </Row>
-          <Row>
-            <h2>Area Commenti</h2>
-            {this.state.commentpass && (
-              <CommentArea book={this.state.commentpass} />
-            )}
-          </Row>
+
         </>
       );
     }
 
-    return elements;
+    return (
+      <>
+      {(
+        <CommentArea book={this.state.commentpass} />
+      )}
+
+      
+      {elements}
+      </>) 
   }
 }
 

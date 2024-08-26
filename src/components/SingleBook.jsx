@@ -18,6 +18,7 @@ function SingleBook (props) {
               <Card className={`h-100 ${border}`} onClick={(e) => {
                 e.preventDefault()
                  props.changeState(props.myBook)
+                 handleClick()
                  } }>
                 <Card.Img variant="top" src={props.myBook.img} />
                 <Card.Body className=" d-flex flex-column">
