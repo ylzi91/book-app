@@ -9,13 +9,19 @@ class CommentList extends Component{
     componentDidMount(){
         this.takeComment()
     }
+
+    componentDidUpdate(prevProps){
+        if(prevProps.takeCom !== this.props.takeCom)
+            this.takeComment()
+
+    }
     
     takeComment = async () => {
         try{
+            console.log('takeCommm', this.props.takeCom)
        const myComment = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${this.props.takeCom}`, {
         headers: {
-            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmM3MzAzMjQzYTU2ODAwMTU4ZWMzZDYiLCJpYXQiOjE3MjQzMzAwMzQsImV4cCI6MTcyNTUzOTYzNH0.JQCwbIAxSaxtufq_7ixQrScXNHuma_V1C34tb6k-3j0"
-        }
+            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmNjODA2ZWZkZWUzZDAwMTU5YmRmMjYiLCJpYXQiOjE3MjQ2NzgyNTQsImV4cCI6MTcyNTg4Nzg1NH0.P-hqBUJZwCk0XSIfjVIJyVCPFhQ0N5RJevlD1GXuKiY"}
        })
        const ListComments = await myComment.json()
        this.setState({

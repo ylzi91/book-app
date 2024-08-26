@@ -8,6 +8,9 @@ class AddComment extends Component {
     rate: "1",
     elementId: this.props.idCom,
   };
+  Saved = {
+    mySaved: false
+  }
 
   writeComment = async (e) => {
     e.preventDefault();
@@ -17,8 +20,7 @@ class AddComment extends Component {
         {
           method: "POST",
           headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmM3MzAzMjQzYTU2ODAwMTU4ZWMzZDYiLCJpYXQiOjE3MjQzMzAwMzQsImV4cCI6MTcyNTUzOTYzNH0.JQCwbIAxSaxtufq_7ixQrScXNHuma_V1C34tb6k-3j0",
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmNjODA2ZWZkZWUzZDAwMTU5YmRmMjYiLCJpYXQiOjE3MjQ2NzgyNTQsImV4cCI6MTcyNTg4Nzg1NH0.P-hqBUJZwCk0XSIfjVIJyVCPFhQ0N5RJevlD1GXuKiY",
             "Content-Type": "application/json",
           },
           body: JSON.stringify(this.state),
@@ -29,6 +31,7 @@ class AddComment extends Component {
         comment: '',
         rate: '1'
       })
+      this.Saved.mySaved = true
     } catch {
       console.log("Errore");
     }
@@ -63,7 +66,7 @@ class AddComment extends Component {
           </Form.Select>
         </Form.Group>
         <Button type="submit">Submit</Button>
-
+          {this.Saved.mySaved && <p>Salvato correttamente</p>}
       </Form>
     );
   }

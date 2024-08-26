@@ -5,6 +5,7 @@ import horrorBooks from "../data/books/horror.json";
 import romanceBooks from "../data/books/romance.json";
 import scifiBooks from "../data/books/scifi.json";
 import SingleBook from "./SingleBook";
+import CommentArea from "./CommentArea";
 
 const jSons = {
     fantasyBooks,
@@ -19,16 +20,21 @@ class AllTheBooks extends Component {
 
 
 
-  render() {
 
+
+
+  render() {
+    console.log('ChangeeeeeeStte', this.props.changeState)
     const genreBooks = jSons [this.props.myGenre]
     
     return genreBooks.filter((book) => 
       book.title.toLowerCase().includes(this.props.searchPassed.toLowerCase())).map((myBook, index) => {
         if (index > 10 && this.props.searchPassed === '') return
         return(
-          
-          <SingleBook myBook = {myBook} key = {myBook.asin}/>
+          <>
+          <SingleBook  changeState = {this.props.changeState} myBook = {myBook} key = {myBook.asin}/>
+       
+          </>
         )
     })
 

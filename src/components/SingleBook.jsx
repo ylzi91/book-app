@@ -14,9 +14,11 @@ function SingleBook (props) {
   };
   console.log(selected)
     return(
-        <Col sm={12} md={6} lg={2} className="mb-3">
-              {selected && <CommentArea book = {props.myBook} />} 
-              <Card className={`h-100 ${border}`} onClick={handleClick}>
+        <Col sm={12} md={6} lg={3} className="mb-3"> 
+              <Card className={`h-100 ${border}`} onClick={(e) => {
+                e.preventDefault()
+                 props.changeState(props.myBook)
+                 } }>
                 <Card.Img variant="top" src={props.myBook.img} />
                 <Card.Body className=" d-flex flex-column">
                   <Card.Title className=" flex-grow-1 ">{props.myBook.title}</Card.Title>
