@@ -16,30 +16,22 @@ const jSons = {
 }
 
 
-class AllTheBooks extends Component {
+function AllTheBooks (props){
 
-
-
-
-
-
-  render() {
-    console.log('ChangeeeeeeStte', this.props.changeState)
-    const genreBooks = jSons [this.props.myGenre]
+    console.log('ChangeeeeeeStte', props.changeState)
+    const genreBooks = jSons [props.myGenre]
     
     return genreBooks.filter((book) => 
-      book.title.toLowerCase().includes(this.props.searchPassed.toLowerCase())).map((myBook, index) => {
-        if (index > 10 && this.props.searchPassed === '') return
+      book.title.toLowerCase().includes(props.searchPassed.toLowerCase())).map((myBook, index) => {
+        if (index > 10 && props.searchPassed === '') return
         return(
           <>
-          <SingleBook  changeState = {this.props.changeState} myBook = {myBook} key = {myBook.asin}/>
+          <SingleBook clicked = {props.clicked} changeSelect = {props.changeSelect}  changeState = {props.changeState} myBook = {myBook} key = {myBook.asin}/>
        
           </>
         )
     })
 
-
-    }
   }
 
 

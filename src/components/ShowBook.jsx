@@ -1,50 +1,54 @@
 import { Row, Col } from "react-bootstrap";
 import AllTheBooks from "./AllTheBooks";
 import { render } from "@testing-library/react";
-import { Component } from "react";
+import { Component, useEffect, useState } from "react";
 import CommentArea from "./CommentArea";
 
-class ShowBook extends Component {
-  state = {
-    search: [],
-    commentpass: {},
-  };
-  changeState = (newSelBook) => {
-    this.setState({
-      commentpass: newSelBook,
-    });
-  };
+function ShowBook (props) {
 
-  render() {
-    console.log("Commentopassss", this.state.commentpass);
+  const [search, setSearch] = useState([])
+  const [commentpass, setCommentPass] = useState([])
+  const [clicked, setClicked] = useState (true)
+  const changeState = (newSelBook) => {
+    setCommentPass(newSelBook);
+  };
+  const changeSelect = (sel) => {
+    setClicked(sel)
+  }
+
+  useEffect(() => {
+    changeSelect(true)
+  }, [commentpass])
+
+
+    console.log("Commentopassss", commentpass);
     const elements = [];
-    for (let i = 0; i < this.props.genreTitle.length; i++) {
+    for (let i = 0; i < props.genreTitle.length; i++) {
       elements.push(
         <>
           <Row key={i}>
             <Col sm={12} md={6} lg={4}>
-              <h4>{this.props.genreTitle[i]}</h4>
+              <h4>{props.genreTitle[i]}</h4>
               <input
                 onChange={(e) => {
                   e.preventDefault();
-                  const newSearch = [...this.state.search];
+                  const newSearch = [...search];
                   newSearch[i] = e.target.value;
-                  this.setState({
-                    search: newSearch,
-                  });
+                  setSearch(newSearch,
+                  );
                 }}
                 className="mb-2"
                 type="text"
                 placeholder="Cerca"
-                value={this.state.search[i]}
+                value={search[i]}
               />
             </Col>
           </Row>
           <Row className=" d-flex flex-nowrap overflow-scroll">
             <AllTheBooks
-              changeState={this.changeState}
-              myGenre={this.props.genreToPass[i]}
-              searchPassed={!this.state.search[i] ? "" : this.state.search[i]}
+              changeState={changeState} changeSelect = {changeSelect} clicked= {clicked}
+              myGenre={props.genreToPass[i]}
+              searchPassed={!search[i] ? "" : search[i]}
             />
           </Row>
 
@@ -55,13 +59,13 @@ class ShowBook extends Component {
     return (
       <>
       {(
-        <CommentArea book={this.state.commentpass} />
+        <CommentArea clicked = {clicked} book={commentpass} />
       )}
 
       
       {elements}
       </>) 
-  }
+  
 }
 
 export default ShowBook;
