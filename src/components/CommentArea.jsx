@@ -8,7 +8,7 @@ function CommentArea(props) {
 
     console.log('BOOOK', props.book)
     return (
-      <Col style={{maxHeight: "250px", overflow: "scroll"}} className=" m-5 rounded-5 shadow bg-white position-fixed top-0 end-0 z-2 border border-2 border-black p-3 mb-3">
+      <Col data-testid = 'area-comment' style={{maxHeight: "250px", overflow: "scroll"}} className=" m-5 rounded-5 shadow bg-white position-fixed top-0 end-0 z-2 border border-2 border-black p-3 mb-3">
       Commenti del libro <h4>{props.clicked && props.book.title}</h4>
         <Tabs
           defaultActiveKey="listComment"

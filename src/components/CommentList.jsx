@@ -8,6 +8,7 @@ function CommentList (props) {
     const [comments, setComments] = useState([])
 
     useEffect(() => {
+        if(props.takeCom)
         takeComment()
     }, [props.takeCom])
 

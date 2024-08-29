@@ -5,7 +5,6 @@ import horrorBooks from "../data/books/horror.json";
 import romanceBooks from "../data/books/romance.json";
 import scifiBooks from "../data/books/scifi.json";
 import SingleBook from "./SingleBook";
-import CommentArea from "./CommentArea";
 
 const jSons = {
     fantasyBooks,
@@ -26,7 +25,7 @@ function AllTheBooks (props){
         if (index > 10 && props.searchPassed === '') return
         return(
           <>
-          <SingleBook clicked = {props.clicked} changeSelect = {props.changeSelect}  changeState = {props.changeState} myBook = {myBook} key = {myBook.asin}/>
+          <SingleBook  clicked = {props.clicked} changeSelect = {props.changeSelect}  changeState = {props.changeState} myBook = {myBook} />
        
           </>
         )

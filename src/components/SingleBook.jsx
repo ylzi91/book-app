@@ -12,8 +12,8 @@ function SingleBook (props) {
   
   };
     return(
-        <Col sm={12} md={6} lg={3} className="mb-3"> 
-              <Card className={`h-100`} onClick={(e) => {
+        <Col data-testid = "list-book" sm={12} md={6} lg={3} className="mb-3"> 
+              <Card className={`h-100`} style={{cursor: 'pointer'}} onClick={(e) => {
                 e.preventDefault()
                  props.changeState(props.myBook)
                  handleClick()
